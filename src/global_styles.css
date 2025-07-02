@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-body text-gray-900 dark:text-gray-100 bg-lightBase-50 dark:bg-darkBase-900 transition-colors duration-300;
+  }
+  
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/10 dark:bg-darkBase-900/10 backdrop-blur-md border border-white/20 dark:border-gray-700/20;
+  }
+  
+  .neumorphic {
+    @apply bg-lightBase-50 dark:bg-darkBase-800 shadow-lg;
+    box-shadow: 
+      8px 8px 16px rgba(0, 0, 0, 0.1),
+      -8px -8px 16px rgba(255, 255, 255, 0.7);
+  }
+  
+  .neumorphic-dark {
+    box-shadow: 
+      8px 8px 16px rgba(0, 0, 0, 0.3),
+      -8px -8px 16px rgba(255, 255, 255, 0.1);
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-techBlue-500 to-techBlue-700 hover:from-techBlue-600 hover:to-techBlue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-innovationGreen-400 to-innovationGreen-600 hover:from-innovationGreen-500 hover:to-innovationGreen-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6 bg-gradient-to-r from-techBlue-500 to-innovationGreen-500 bg-clip-text text-transparent;
+  }
+  
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12;
+  }
+  
+  .metric-card {
+    @apply bg-white dark:bg-darkBase-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-105;
+  }
+  
+  .service-card {
+    @apply bg-white dark:bg-darkBase-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:border-techBlue-300 dark:hover:border-techBlue-500;
+  }
+  
+  .profile-card {
+    @apply bg-white dark:bg-darkBase-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:rotate-2;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .animate-gradient {
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
