@@ -1,22 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
     @apply font-body text-gray-900 dark:text-gray-100 bg-lightBase-50 dark:bg-darkBase-900 transition-colors duration-300;
+    overflow-x: hidden;
   }
   
   * {
     @apply box-border;
   }
 }
+
 
 @layer components {
   .glass-effect {
@@ -45,7 +48,7 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6 bg-gradient-to-r from-techBlue-500 to-innovationGreen-500 bg-clip-text text-transparent;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6 bg-gradient-to-r from-techBlue-500 to-violet-600 bg-clip-text text-transparent;
   }
   
   .section-subtitle {
@@ -84,4 +87,14 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+
+  .pause-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
 }

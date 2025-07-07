@@ -1,0 +1,288 @@
+
+
+//////////////////////////////////////////////////////////////////////////// hero con iconos///////////////////////////
+
+import { Component, signal, inject, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LanguageService } from '../services/language.service';
+
+@Component({
+  selector: 'app-hero',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Video Background con atributos mejorados -->
+      <video #bgVideo class="absolute inset-0 w-full h-full object-cover" loop muted playsinline>
+        <source src="assets/videos/ver2.mp4" type="video/mp4">
+        Your browser does not support the video tag
+      </video>
+      
+
+      <!-- Particle Canvas -->
+      <canvas #particleCanvas 
+              class="absolute inset-0 w-full h-full opacity-30"
+              [width]="canvasWidth()"
+              [height]="canvasHeight()">
+      </canvas>
+      
+     <!-- Botón de pausa 
+      <button (click)="toggleVideo()" 
+              class="absolute bottom-6 right-6 z-50 p-3 rounded-full bg-black/10 backdrop-blur-sm text-white transition-all duration-300 hover:bg-accentGold-400/60">
+        <span *ngIf="isPaused()" class="text-xl flex items-center justify-center w-6 h-6">▶</span>
+        <span *ngIf="!isPaused()" class="text-xl flex items-center justify-center w-6 h-6">⏸</span>
+      </button> -->
+      
+      <!-- Content Container -->
+      <div class="relative z-10 container mx-auto px-6 text-center">
+        <div class="max-w-5xl mx-auto">
+          <!-- Main Headline (with futuristic effects) -->
+          <div [class]="showContent() ? 'animate-futuristic-reveal' : 'opacity-0'">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-black text-white mb-6 text-shadow-holographic">
+              {{ isSpanish() ? 'Construimos Ecosistemas' : 'We Build Digital' }}
+              <span class="block bg-gradient-to-r from-accentGold-400 to-innovationGreen-400 bg-clip-text text-transparent animate-hologram">
+                {{ isSpanish() ? 'Digitales que Crean' : 'Ecosystems That Create' }}
+              </span>
+              <span class="block text-white drop-shadow-glow">
+                {{ isSpanish() ? 'Legados' : 'Legacies' }}
+              </span>
+            </h1>
+            
+            <!-- Subheadline -->
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto font-light bg-black/20 backdrop-blur-sm p-4 rounded-xl border border-innovationGreen-400/30 neon-glow">
+              {{ isSpanish() 
+                ? 'Donde el conocimiento, el software y el marketing convergen para transformar empresas y crear líderes tecnológicos.' 
+                : 'Where knowledge, software, and marketing converge to transform businesses and create tech leaders.' 
+              }}
+            </p>
+            
+            <!-- Stats Preview -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              <div *ngFor="let stat of heroStats" class="glass-effect-futuristic rounded-xl p-4 transform transition-all duration-500 hover:scale-105 hover:shadow-hologram">
+                <div class="text-2xl md:text-3xl font-bold text-accentGold-400 mb-1 drop-shadow-glow">{{ stat.value }}</div>
+                <div class="text-sm text-gray-200">{{ stat.label }}</div>
+              </div>
+            </div>
+            
+            <!-- CTA Buttons 
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button class="btn-futuristic-primary text-lg px-8 py-4 hover:animate-pulse">
+                {{ isSpanish() ? 'Explorar Soluciones' : 'Explore Our Solutions' }}
+              </button>
+              <button class="btn-futuristic-secondary text-lg px-8 py-4">
+                {{ isSpanish() ? 'Auditoría de Innovación' : 'Innovation Audit' }}
+              </button>  
+            </div> -->
+          </div>
+          
+          <!-- Scroll Indicator -->
+          <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-innovationGreen-400 rounded-full flex justify-center">
+              <div class="w-1 h-3 bg-accentGold-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div *ngFor="let element of floatingElements; trackBy: trackByIndex" 
+             class="absolute animate-float opacity-30"
+             [style.left.%]="element.x"
+             [style.top.%]="element.y"
+             [style.animation-delay]="element.delay + 's'">
+          <div class="text-4xl text-accentGold-400 drop-shadow-glow">{{ element.icon }}</div>
+        </div>
+      </div>
+    </section>
+  `,
+  styles: [`
+    .text-shadow-holographic {
+      text-shadow: 0 0 10px rgba(110, 231, 183, 0.7), 
+                   0 0 20px rgba(110, 231, 183, 0.5),
+                   0 0 30px rgba(59, 130, 246, 0.3);
+    }
+    
+    .drop-shadow-glow {
+      filter: drop-shadow(0 0 5px rgba(236, 201, 75, 0.6));
+    }
+    
+    .glass-effect-futuristic {
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(110, 231, 183, 0.2);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1),
+                 inset 0 0 10px rgba(110, 231, 183, 0.1);
+    }
+    
+    .btn-futuristic-primary {
+      background: linear-gradient(45deg, #0ea5e9, #10b981);
+      border: 1px solid rgba(110, 231, 183, 0.4);
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4),
+                  inset 0 0 10px rgba(14, 165, 233, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-futuristic-secondary {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(236, 201, 75, 0.4);
+      border-radius: 12px;
+      color: #ecc94b;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(236, 201, 75, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .neon-glow {
+      box-shadow: 0 0 15px rgba(110, 231, 183, 0.4),
+                  inset 0 0 10px rgba(59, 130, 246, 0.2);
+    }
+    
+    .animate-hologram {
+      animation: hologram 3s infinite alternate;
+    }
+    
+    .animate-futuristic-reveal {
+      animation: futuristicReveal 1.5s ease-out forwards;
+    }
+
+    .pause-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @keyframes hologram {
+      0% { opacity: 0.9; text-shadow: 0 0 10px rgba(110, 231, 183, 0.7); }
+      50% { opacity: 1; text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(110, 231, 183, 0.6); }
+      100% { opacity: 0.95; text-shadow: 0 0 15px rgba(236, 201, 75, 0.7), 0 0 25px rgba(16, 185, 129, 0.6); }
+    }
+    
+    @keyframes futuristicReveal {
+      0% { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95);
+        filter: blur(5px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+  `]
+})
+export class HeroComponent implements OnInit, OnDestroy, AfterViewInit {
+  private languageService = inject(LanguageService);
+  
+  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
+  
+  canvasWidth = signal(0);
+  canvasHeight = signal(0);
+  isPaused = signal(false);
+  showContent = signal(false);
+  
+  currentLanguage = this.languageService.currentLanguage;
+  
+  heroStats = [
+    { value: '10K+', label: 'Professionals' },
+    { value: '20+', label: 'SaaS Solutions' },
+    { value: '120+', label: 'Brands' },
+    { value: '50+', label: 'Startups' }
+  ];
+  
+  floatingElements = [
+    { icon: '💻', x: 10, y: 20, delay: 0 },
+    { icon: '🚀', x: 85, y: 15, delay: 1 },
+    { icon: '⚡', x: 15, y: 70, delay: 2 },
+
+    { icon: '⊱⭐⊱╮꧁ ꧂╭⊱⭐≺', x: 37, y: 20, delay: 3 },
+
+    { icon: '🎯', x: 90, y: 65, delay: 4 },
+    { icon: '💡', x: 5, y: 45, delay: 5 },
+    { icon: '🔧', x: 95, y: 40, delay: 6 }
+  ];
+
+  ngOnInit(): void {
+    this.updateCanvasSize();
+    window.addEventListener('resize', this.updateCanvasSize.bind(this));
+  
+
+    // Ocultar contenido inicialmente
+    this.showContent.set(false);
+    
+    // Mostrar contenido después de 15 segundos
+    setTimeout(() => {
+      this.showContent.set(true);
+    }, 12500);
+  }
+
+  // Añadir esta función para asegurar autoplay
+  ngAfterViewInit(): void {
+     this.initializeVideo();
+  }
+
+   private initializeVideo(): void {
+    const video = this.bgVideo.nativeElement;
+    
+    // 1. Intentar reproducción automática con sonido muteado
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        // 2. Si falla, mostrar botón de play forzado
+        this.isPaused.set(true);
+        
+        // 3. Intentar de nuevo después de interacción del usuario
+        const playAfterInteraction = () => {
+          video.play()
+            .then(() => {
+              this.isPaused.set(false);
+              document.removeEventListener('click', playAfterInteraction);
+              document.removeEventListener('touchstart', playAfterInteraction);
+            })
+            .catch(() => {});
+        };
+        
+        document.addEventListener('click', playAfterInteraction);
+        document.addEventListener('touchstart', playAfterInteraction);
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.updateCanvasSize.bind(this));
+  }
+
+  isSpanish(): boolean {
+    return this.languageService.getCurrentLanguageCode() === 'es';
+  }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
+
+  toggleVideo(): void {
+    if (this.bgVideo.nativeElement.paused) {
+      this.bgVideo.nativeElement.play();
+      this.isPaused.set(false);
+    } else {
+      this.bgVideo.nativeElement.pause();
+      this.isPaused.set(true);
+    }
+  }
+
+  private updateCanvasSize(): void {
+    this.canvasWidth.set(window.innerWidth);
+    this.canvasHeight.set(window.innerHeight);
+  }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
