@@ -20,7 +20,7 @@ import { LanguageService } from '../services/language.service';
               <h1 class="text-xl font-display font-bold text-gray-900 dark:text-white">
                 Tech Data Codes
               </h1>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Digital Ecosystem Architects</p>
+              <p class="text-sm text-gray-700 dark:text-gray-600">Digital Ecosystem Architects</p>
             </div>
           </div>
 
@@ -28,7 +28,7 @@ import { LanguageService } from '../services/language.service';
           <div class="hidden lg:flex items-center space-x-8">
             <a *ngFor="let item of navigationItems" 
                [href]="item.href"
-               class="text-gray-700 dark:text-gray-300 hover:text-techBlue-500 dark:hover:text-techBlue-400 font-medium transition-colors duration-200 relative group">
+               class="text-gray-700 dark:text-gray-900 hover:text-techBlue-500 dark:hover:text-techBlue-400 font-medium transition-colors duration-200 relative group">
               {{ item.label }}
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-techBlue-500 transition-all duration-300 group-hover:w-full"></span>
             </a>

@@ -10,33 +10,33 @@ export class DataService {
     return [
       {
         id: 'professionals',
-        value: 10000,
+        value: 100,
         label: 'Professionals Trained',
-        icon: '👥',
+        icon: '👨🏻‍🎓',
         suffix: '+',
         color: 'text-techBlue-500'
       },
       {
-        id: 'saas',
+        id: 'systems',
         value: 20,
-        label: 'SaaS Solutions',
-        icon: '⚡',
+        label: 'Custom Systems',
+        icon: '💻',
         suffix: '+',
         color: 'text-innovationGreen-500'
       },
       {
         id: 'brands',
-        value: 120,
+        value: 20,
         label: 'Brands Positioned',
-        icon: '🚀',
+        icon: '🥇',
         suffix: '+',
         color: 'text-accentGold-500'
       },
       {
         id: 'startups',
-        value: 50,
+        value: 3,
         label: 'Startups Accelerated',
-        icon: '💼',
+        icon: '👩🏻‍💻',
         suffix: '+',
         color: 'text-purple-500'
       }

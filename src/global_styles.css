@@ -96,5 +96,63 @@
     align-items: center;
     justify-content: center;
   }
+
+/* Agrega esto al final de tu global.css */
+@layer utilities {
+  .holographic-grid {
+    background-image: 
+      linear-gradient(rgba(0, 195, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 195, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: gridScroll 20s linear infinite;
+  }
+  
+  @keyframes gridScroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 30px 30px; }
+  }
+  
+  .holographic-overlay {
+    background: 
+      linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(0, 247, 255, 0) 50%),
+      repeating-linear-gradient(
+        45deg,
+        rgba(0, 195, 255, 0.03) 0px,
+        rgba(0, 195, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+  }
+  
+  .glowing-border {
+    border: 1px solid rgba(0, 195, 255, 0.3);
+    box-shadow: 
+      0 0 10px rgba(0, 195, 255, 0.2),
+      0 0 20px rgba(0, 195, 255, 0.1),
+      inset 0 0 10px rgba(0, 195, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .metric-card:hover .glowing-border,
+  .service-card:hover .glowing-border {
+    box-shadow: 
+      0 0 15px rgba(0, 195, 255, 0.4),
+      0 0 30px rgba(0, 195, 255, 0.2),
+      inset 0 0 15px rgba(0, 195, 255, 0.2);
+    border: 1px solid rgba(0, 225, 255, 0.5);
+  }
+  
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+  }
+}
+
   
 }
