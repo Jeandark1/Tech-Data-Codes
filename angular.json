@@ -38,14 +38,22 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "outputPath": "dist/demo",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "scripts": [],
+<<<<<<< HEAD
             "styles": ["src/global_styles.css"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "./node_modules"
               ]
             },
+=======
+            "styles": [
+              "src/global_styles.css"
+            ],
+>>>>>>> e033197 (add Seccion de servicios con animacion)
             "tsConfig": "tsconfig.app.json"
           }
         },

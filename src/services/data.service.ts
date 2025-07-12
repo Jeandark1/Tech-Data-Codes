@@ -5,7 +5,7 @@ import { Metric, Service, TeamMember, SuccessStory } from '../types/interfaces';
   providedIn: 'root'
 })
 export class DataService {
-  
+
   getMetrics(): Metric[] {
     return [
       {
@@ -48,7 +48,7 @@ export class DataService {
       {
         id: 'tech-development',
         title: 'Tech Development',
-        description: 'Custom SaaS solutions and startup accelerators built with cutting-edge technology.',
+        description: 'Development of systems, web pages and custom applications with advanced technology.',
         icon: '💻',
         features: ['Custom SaaS Platforms', 'API Development', 'Cloud Architecture', 'DevOps Solutions'],
         color: 'techBlue'
@@ -56,7 +56,7 @@ export class DataService {
       {
         id: 'virtual-education',
         title: 'Virtual Education',
-        description: 'Training 10k+ professionals and building future tech leaders through innovative programs.',
+        description: 'Training and development of future technology leaders through innovative programs.',
         icon: '🎓',
         features: ['Professional Certification', 'Tech Leadership', 'Online Courses', 'Mentorship Programs'],
         color: 'innovationGreen'
