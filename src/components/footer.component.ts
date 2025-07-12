@@ -35,6 +35,8 @@ import { LanguageService } from '../services/language.service';
                   ? 'Transformamos empresas a través de ecosistemas digitales integrados que combinan tecnología, educación y marketing de vanguardia.' 
                   : 'We transform businesses through integrated digital ecosystems that combine cutting-edge technology, education, and marketing.' 
                 }}
+
+                 
               </p>
               
               <!-- Social Links -->

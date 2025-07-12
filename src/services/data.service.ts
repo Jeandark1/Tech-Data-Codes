@@ -49,7 +49,7 @@ export class DataService {
         id: 'tech-development',
         title: 'Tech Development',
         description: 'Development of systems, web pages and custom applications with advanced technology.',
-        icon: '💻',
+        icon: '💻',  
         features: ['Custom SaaS Platforms', 'API Development', 'Cloud Architecture', 'DevOps Solutions'],
         color: 'techBlue'
       },
@@ -76,7 +76,7 @@ export class DataService {
     return [
       {
         id: 'ricardo',
-        name: 'Ricardo Mérida',
+        name: 'Ricardo Pilcomayo',
         role: 'CTO',
         description: 'Tech Architecture Visionary',
         image: 'https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -89,7 +89,7 @@ export class DataService {
       },
       {
         id: 'lady',
-        name: 'Lady Mérida',
+        name: 'Lady Osco',
         role: 'CFO/COO',
         description: 'Operations Excellence Leader',
         image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -101,7 +101,7 @@ export class DataService {
       },
       {
         id: 'juan',
-        name: 'Juan Gabriel',
+        name: 'Juan Churata',
         role: 'CEO',
         description: 'Strategic Vision Architect',
         image: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400',

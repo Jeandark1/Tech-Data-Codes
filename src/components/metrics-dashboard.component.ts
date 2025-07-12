@@ -49,8 +49,8 @@ import { Metric } from '../types/interfaces';
           </h2>
           <p class="section-subtitle">
             {{ isSpanish()
-              ? 'Empezando a hacer crecer marcas en renombre y vizualizacion, nuestro objetivo es dominar el area digital en cuando a publicidad y marketing usando las mejores estrategias para cada tipo de empresa.'
-              : 'Starting to grow brands in renown and visualization, our goal is to dominate the digital arena in terms of advertising and marketing using the best strategies for each type of business.'
+              ? 'Empezando a hacer crecer marcas de empresas, nuestro objetivo es dominar el area digital en cuando a publicidad y marketing usando las mejores estrategias para cada tipo de empresa.'
+              : 'Starting to grow business brands, our goal is to dominate the digital area in terms of advertising and marketing using the best strategies for each type of company.'
             }}
           </p>
         </div>
@@ -128,7 +128,7 @@ import { Metric } from '../types/interfaces';
                 : '95% satisfaction rate based on over 1,000 evaluations.'
               }}
             </p>
-            <div class="text-3xl font-bold text-accentGold-500">98%</div>
+            <div class="text-3xl font-bold text-accentGold-500">95%</div>
           </div>
 
           <div
@@ -146,7 +146,7 @@ import { Metric } from '../types/interfaces';
                 : 'Leading digital transformation with emerging technologies.'
               }}
             </p>
-            <div class="text-3xl font-bold text-innovationGreen-500">A+</div>
+            <div class="text-3xl font-bold text-innovationGreen-500">A++</div>
           </div>
         </div>
       </div>
@@ -165,7 +165,7 @@ export class MetricsDashboardComponent implements OnInit {
   @ViewChildren('metricCard') metricCards!: QueryList<ElementRef>;
   @ViewChildren('impactCard') impactCards!: QueryList<ElementRef>;
 
-  topCountries = ['🇺🇸', '🇪🇸', '🇲🇽', '🇨🇴', '🇦🇷', '🇵🇪'];
+  topCountries = ['BOL', 'AR', 'PER', 'CO', 'USA', 'BRA']; 
 
   ngOnInit(): void {
     this.metrics = this.dataService.getMetrics();

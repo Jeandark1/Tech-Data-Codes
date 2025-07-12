@@ -37,9 +37,7 @@ import { TeamMember } from '../types/interfaces';
             
             <!-- Member Image -->
             <div class="relative mb-6 overflow-hidden rounded-2xl">
-              <img [src]="member.image" 
-                   [alt]="member.name"
-                   class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+             <!-- <img  [alt]="member.name"  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"> -->
               
               <!-- Overlay -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

@@ -104,7 +104,7 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
               <!-- Front Face -->
               <div class="cardFace front">
                 <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  📈
+                  📊
                 </div>
                 <h3 class="card-title">
                   {{ getTranslatedTitle('Digital Marketing') }}

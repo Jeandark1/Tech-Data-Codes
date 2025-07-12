@@ -52,9 +52,12 @@ import { LanguageService } from '../services/language.service';
             </button>
 
             <!-- CTA Button -->
-            <button class="btn-primary hidden sm:block">
+            <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20desarrollo%20tecnol%C3%B3gico" 
+            class="btn-primary hidden sm:block">
               {{ currentLanguage().code === 'es' ? 'Consulta Gratuita' : 'Free Consultation' }}
-            </button>
+            </a>
+
+            
 
             <!-- Mobile Menu Toggle -->
             <button 
