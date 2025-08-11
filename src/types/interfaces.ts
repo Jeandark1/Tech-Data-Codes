@@ -10,10 +10,13 @@ export interface Metric {
 
 export interface Service {
   id: string;
-  title: string;
-  description: string;
+  titleES: string;
+  titleEN: string;
+  descriptionES: string;
+  descriptionEN: string;
   icon: string;
-  features: string[];
+  featuresEN: string[];
+  featuresES: string[];
   color: string;
 }
 

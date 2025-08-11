@@ -1,0 +1,188 @@
+<section id="flipping-cards" class="py-20 relative">
+    <!-- Background with dark mode support -->
+    <div class="absolute inset-0 bg-white dark:bg-darkBase-900"></div>
+    <div class="relative z-10 container mx-auto px-6">
+        <!-- Section Header with translation -->
+        <div class="text-center mb-16">
+            <h2 class="section-title">
+                {{ getTranslatedSectionTitle(contentText[0].id) }}
+            </h2>
+            <p class="section-subtitle">
+                {{ getTranslatedSectionDescription(contentText[0].id) }}
+            </p>
+        </div>
+
+        <!-- Flipping Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+            <!-- Card 1 - Tech Development -->
+            <div class="cardWrapper group" style="width: 300px; height: 400px;">
+                <div class="card">
+                    <!-- Front Face -->
+                    <div class="cardFace front">
+                        <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                            {{ getTranslatedCardField('Tech Development', 'icon') }}
+                        </div>
+                        <h3 class="card-title">
+                            {{ getTranslatedCardField('Tech Development', 'title') }}
+                        </h3>
+                        <p class="card-description">
+                            {{ getTranslatedCardField('Tech Development', 'description') }}
+                        </p>
+                    </div>
+
+                    <!-- Back Face -->
+                    <div class="cardFace back">
+                        <h3 class="card-title">
+                            {{ getTranslatedCardField('Tech Development', 'title') }}
+                        </h3>
+                        <ul class="feature-list">
+                            <li>
+                                {{ getTranslatedFeature('Tech Development', 'Custom systems and applications.') }}
+                            </li>
+                            <li>{{ getTranslatedFeature('Tech Development','Professional website development.') }}</li>
+                            <li>{{ getTranslatedFeature('Tech Development','High-conversion landing pages.') }}</li>
+                            <li>{{ getTranslatedFeature('Tech Development','Fully customized software.') }}</li>
+                        </ul>
+                        <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20desarrollo%20tecnol%C3%B3gico"
+                            target="_blank" class="card-button" style="background-color: #096ab9;">
+                            {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 - Education -->
+            <div class="cardWrapper group" style="width: 300px; height: 400px;">
+                <div class="card">
+                    <!-- Front Face -->
+                    <div class="cardFace front">
+                        <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                            🎓
+                        </div>
+                        <h3 class="card-title">
+                            {{ getTranslatedCardField('Advanced Education','title') }}
+                        </h3>
+                        <p class="card-description">
+                            {{ getTranslatedDescription('Train with practical courses: master AI, social media and
+                            digital tools to save time and make smart decisions.') }}
+                        </p>
+                    </div>
+
+                    <!-- Back Face -->
+                    <div class="cardFace back">
+                        <h3 class="card-title">
+                            {{ getTranslatedCardField('Advanced Education','title') }}
+                        </h3>
+                        <ul class="feature-list">
+                            <li>{{ getTranslatedFeature('Advanced Education','In-person and virtual courses.') }}</li>
+                            <li>{{ getTranslatedFeature('Advanced Education','Practical AI for business.') }}</li>
+                            <li>{{ getTranslatedFeature('Advanced Education','AI applications in different fields.') }}
+                            </li>
+                            <li>{{ getTranslatedFeature('Advanced Education','Technology management courses.') }}</li>
+                            <li>{{ getTranslatedFeature('Advanced Education','Digital certification.') }}</li>
+                        </ul>
+                        <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20cursos"
+                            target="_blank" class="card-button" style="background-color: #0db583;">
+                            {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 - Digital Marketing -->
+            <div class="cardWrapper group" style="width: 300px; height: 400px;">
+                <div class="card">
+                    <!-- Front Face -->
+                    <div class="cardFace front">
+                        <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                            📈
+                        </div>
+                        <h3 class="card-title">
+                            {{ getTranslatedCardField('Digital Marketing','title') }}
+                        </h3>
+                        <p class="card-description">
+                            {{ getTranslatedDescription('Boost your brand with 360° strategies: from targeted
+                            advertising to viral content. We use AI to maximize your ROI.') }}
+                        </p>
+                    </div>
+
+                    <!-- Back Face -->
+                    <div class="cardFace back">
+                        <h3 class="card-title">
+                            {{ getTranslatedCardField('Digital Marketing','title') }}
+                        </h3>
+                        <ul class="feature-list">
+                            <li>
+                                {{ getTranslatedFeature('Digital Marketing','Facebook, Google, and TikTok Ads.') }}
+                            </li>
+                            <li>{{ getTranslatedFeature('Digital Marketing', 'WhatsApp Business API.') }}</li>
+                            <li>{{ getTranslatedFeature('Digital Marketing', 'SEO Optimization.') }}</li>
+                            <li>{{ getTranslatedFeature('Digital Marketing', 'Social media management.') }}</li>
+                            <li>{{ getTranslatedFeature('Digital Marketing', 'Sales funnels and CRO.') }}</li>
+                            <li>{{ getTranslatedFeature('Digital Marketing', 'Viral content creation.') }}</li>
+                        </ul>
+                        <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20marketing%20digital"
+                            target="_blank" class="card-button" style="background-color: #ffd166;">
+                            {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Transformation Process Section -->
+<section id="process-cards" class="py-20 bg-gray-50 dark:bg-darkBase-800 transition-colors">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold mb-4 text-gray-900 dark:text-white transition-colors">
+                {{ isSpanish() ? 'Nuestro Proceso de Transformación' : 'Our Transformation Process' }}
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 transition-colors">
+                {{ isSpanish()
+                ? 'Acompañamos a tu empresa en cada etapa del crecimiento digital'
+                : 'We guide your business through every stage of digital growth' }}
+            </p>
+        </div>
+
+        <!-- Process Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center"
+            style="display:flex;flex-wrap: wrap;justify-content: center;">
+
+            <ng-container *ngFor="let phase of processPhases; let i = index; let last = last">
+                <!-- Tarjeta de fase -->
+                <div class="process-card group relative bg-white dark:bg-darkBase-900 rounded-xl shadow-lg p-8 flex flex-col items-center transition-all duration-500"
+                    [style.animation-delay]="(i * 100) + 'ms'" tabindex="0">
+                    <!-- Animated Number Circle -->
+                    <div class="circle-num w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mb-6
+                            bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md">
+                        {{ i + 1 }}
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white text-center">
+                        {{ getPhaseTitle(phase.key) }}
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                        {{ getPhaseDescription(phase.key) }}
+                    </p>
+
+                    <ul class="w-full space-y-2">
+                        <li *ngFor="let point of getPhasePoints(phase.key)"
+                            class="flex items-start text-gray-700 dark:text-gray-300">
+                            <span class="mr-2 text-blue-500">•</span>
+                            <span>{{ point }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Flecha, solo si NO es la última tarjeta -->
+                <div *ngIf="!last" class="hidden md:flex items-center select-none">
+                    <span class="text-2xl text-blue-500 font-bold mx-2">——</span>
+                    <!-- O pon aquí el SVG si quieres -->
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

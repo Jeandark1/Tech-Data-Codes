@@ -43,30 +43,88 @@ export class DataService {
     ];
   }
 
-  getServices(): Service[] {
+  getOurServices(): Service[] {
     return [
       {
-        id: 'tech-development',
-        title: 'Tech Development',
-        description: 'Development of systems, web pages and custom applications with advanced technology.',
+        id: 'Title-Section-Service',
+        titleES: 'Nuestros Servicios',
+        titleEN: 'Our Services',
+        descriptionES: 'Soluciones integrales para impulsar tu negocio digital.',
+        descriptionEN: 'Comprehensive solutions to boost your digital business.',
+        icon: '',
+        featuresES: [
+        ],
+        featuresEN: [
+        ],
+        color: ''
+      },
+      {
+        id: 'Tech Development',
+        titleES: 'Desarrollo Tecnológico',
+        titleEN: 'Tech Development',
+        descriptionES: 'Desarrollo de sistemas, páginas web y aplicaciones personalizadas con tecnología avanzada.',
+        descriptionEN: 'Train with practical courses: master AI, social media and digital tools to save time and make smart decisions.',
         icon: '💻',
-        features: ['Custom SaaS Platforms', 'API Development', 'Cloud Architecture', 'DevOps Solutions'],
+        featuresES: [
+          'Sistemas y aplicaciones personalizadas.',
+          'Creación de páginas web profesionales.',
+          'Landing pages para ventas.',
+          'Desarrollo de sistemas a medida.'
+        ],
+        featuresEN: [
+          'Custom systems and applications.',
+          'Professional website development.',
+          'High-conversion landing pages.',
+          'Fully customized software.'
+        ],
         color: 'techBlue'
       },
       {
-        id: 'virtual-education',
-        title: 'Virtual Education',
-        description: 'Training and development of future technology leaders through innovative programs.',
+        id: 'Advanced Education',
+        titleES: 'Educación Avanzada',
+        titleEN: 'Advanced Education',
+        descriptionES: 'Train with practical courses: master AI, social media and digital tools to save time and make smart decisions.',
+        descriptionEN: 'Train with practical courses: master AI, social media and digital tools to save time and make smart decisions.',
         icon: '🎓',
-        features: ['Professional Certification', 'Tech Leadership', 'Online Courses', 'Mentorship Programs'],
+        featuresES: [
+          'Cursos presenciales y virtuales.',
+          'Cursos prácticos de IA para negocios.',
+          'Cursos de IA aplicada a diferentes áreas.',
+          'Cursos de manejo de tecnología.',
+          'Certificación digital.'
+        ],
+        featuresEN: [
+          'In-person and virtual courses.',
+          'Practical AI for business.',
+          'AI applications in different fields.',
+          'Technology management courses.',
+          'Digital certification.'
+        ],
         color: 'innovationGreen'
       },
       {
-        id: 'digital-marketing',
-        title: 'Digital Marketing',
-        description: 'Sales funnels and organic growth strategies that amplify your digital presence.',
+        id: 'Digital Marketing',
+        titleES: 'Marketing Digital',
+        titleEN: 'Digital Marketing',
+        descriptionES: 'Boost your brand with 360° strategies: from targeted advertising to viral content. We use AI to maximize your ROI.',
+        descriptionEN: 'Boost your brand with 360° strategies: from targeted advertising to viral content. We use AI to maximize your ROI.',
         icon: '📊',
-        features: ['Growth Hacking', 'Sales Funnels', 'SEO Optimization', 'Social Media Strategy'],
+        featuresES: [
+          'Facebook, Google Ads y TikTok Ads.',
+          'API de WhatsApp Business.',
+          'SEO (Posicionamiento orgánico).',
+          'Administración de redes sociales.',
+          'Embudos de venta y optimización.',
+          'Creación de contenido viral.'
+        ],
+        featuresEN: [
+          'Facebook, Google, and TikTok Ads.',
+          'WhatsApp Business API.',
+          'SEO Optimization.',
+          'Social media management.',
+          'Sales funnels and CRO.',
+          'Viral content creation.'
+        ],
         color: 'accentGold'
       }
     ];
@@ -112,8 +170,8 @@ export class DataService {
         }
       },
       {
-        id: 'jhonatan',
-        name: 'Jhonatan Mallea',
+        id: 'Jonatan',
+        name: 'Jonatan Mallea',
         role: 'GFT',
         description: 'Resource Optimization Specialist',
         image: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400',
