@@ -42,18 +42,12 @@
               "zone.js"
             ],
             "scripts": [],
-<<<<<<< HEAD
             "styles": ["src/global_styles.css"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "./node_modules"
               ]
             },
-=======
-            "styles": [
-              "src/global_styles.css"
-            ],
->>>>>>> e033197 (add Seccion de servicios con animacion)
             "tsConfig": "tsconfig.app.json"
           }
         },

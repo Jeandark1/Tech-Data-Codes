@@ -1,3 +1,4 @@
+import { ScrollAnimation } from './../app/scroll-animation';
 import {
   Component,
   signal,
@@ -20,22 +21,11 @@ import { DataService } from '../services/data.service';
 import { LanguageService } from '../services/language.service';
 import { Metric } from '../types/interfaces';
 
+
 @Component({
   selector: 'app-metrics-dashboard',
   standalone: true,
-  imports: [CommonModule],
-  animations: [
-    trigger('flyIn', [
-      state('hidden', style({ opacity: 0, transform: 'translateX(150px)' })),
-      state('visible', style({ opacity: 1, transform: 'translateX(0)' })),
-      transition('hidden => visible', animate('800ms cubic-bezier(0.35, 0, 0.25, 1)')),
-    ]),
-    trigger('fadeUp', [
-      state('hidden', style({ opacity: 0, transform: 'translateY(50px)' })),
-      state('visible', style({ opacity: 1, transform: 'translateY(0)' })),
-      transition('hidden => visible', animate('800ms ease-out')),
-    ])
-  ],
+  imports: [CommonModule, ScrollAnimation],
   template: `
     <section id="metrics" class="py-20 relative overflow-hidden">
       <!-- Background -->
@@ -44,10 +34,20 @@ import { Metric } from '../types/interfaces';
       <div class="relative z-10 container mx-auto px-6">
         <!-- Section Header -->
         <div class="text-center mb-16">
-          <h2 class="section-title">
+          <h2 
+          appScrollAnimation
+          animationType="fadeIn"
+          [style.transitionDelay]="200"
+          class="scroll-item section-title">
+
             {{ isSpanish() ? 'Impacto Social' : 'Social Impact' }}
           </h2>
-          <p class="section-subtitle">
+          
+          <p appScrollAnimation
+            animationType="fadeIn"
+            [style.transitionDelay]="300"
+            class="scroll-item section-subtitle"
+          >
             {{ isSpanish()
               ? 'Empezando a hacer crecer marcas de empresas, nuestro objetivo es dominar el area digital en cuando a publicidad y marketing usando las mejores estrategias para cada tipo de empresa.'
               : 'Starting to grow business brands, our goal is to dominate the digital area in terms of advertising and marketing using the best strategies for each type of company.'
@@ -56,15 +56,14 @@ import { Metric } from '../types/interfaces';
         </div>
 
         <!-- Metrics Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          <div
-            *ngFor="let metric of metrics; trackBy: trackById; index as i"
-            #metricCard
-            [attr.data-id]="metric.id"
-            [@flyIn]="cardStates[metric.id] || 'hidden'"
-            class="metric-card text-center group"
-            [style.animationDelay]="(i * 100) + 'ms'"
-          >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div
+          *ngFor="let metric of metrics; trackBy: trackById; index as i"
+          appScrollAnimation
+          animationType="slideUp"
+          [style.transitionDelay]="(i * 200) + 'ms'"
+          class="scroll-item metric-card text-center group"
+        >
             <!-- Icon -->
             <div class="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
               {{ metric.icon }}
@@ -83,7 +82,7 @@ import { Metric } from '../types/interfaces';
             <!-- Progress Bar -->
             <div class="mt-4 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
               <div
-                class="h-2 rounded-full transition-all duration-1000 ease-out"
+                class="h-2 rounded-full transition-all duration-500 ease-out"
                 [ngClass]="getProgressBarColor(metric.color)"
                 [style.width.%]="getProgressPercentage(metric.id)"
               ></div>
@@ -93,10 +92,10 @@ import { Metric } from '../types/interfaces';
 
         <!-- Additional Impact Metrics -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            class="service-card text-center"
-            #impactCard
-            [@fadeUp]="impactCardStates[0] || 'hidden'"
+          <div appScrollAnimation
+            animationType="slideLeft"
+            [style.transitionDelay]="150"
+            class="scroll-item service-card text-center"
           >
             <div class="text-3xl mb-4">🌍</div>
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
@@ -113,10 +112,10 @@ import { Metric } from '../types/interfaces';
             </div>
           </div>
 
-          <div
-            class="service-card text-center"
-            #impactCard
-            [@fadeUp]="impactCardStates[1] || 'hidden'"
+          <div  appScrollAnimation
+            animationType="slideUp"
+            [style.transitionDelay]="'250ms'"
+            class="scroll-item service-card text-center"
           >
             <div class="text-3xl mb-4">🏆</div>
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
@@ -132,9 +131,10 @@ import { Metric } from '../types/interfaces';
           </div>
 
           <div
-            class="service-card text-center"
-            #impactCard
-            [@fadeUp]="impactCardStates[2] || 'hidden'"
+            appScrollAnimation
+            animationType="slideRight"
+            [style.transitionDelay]="'350ms'"
+            class="scroll-item service-card text-center"
           >
             <div class="text-3xl mb-4">💳💎</div>
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
@@ -159,21 +159,12 @@ export class MetricsDashboardComponent implements OnInit {
 
   metrics: Metric[] = [];
   animatedValues: { [key: string]: number } = {};
-  cardStates: { [key: string]: 'hidden' | 'visible' } = {};
-  impactCardStates: ('hidden' | 'visible')[] = ['hidden', 'hidden', 'hidden'];
-
-  @ViewChildren('metricCard') metricCards!: QueryList<ElementRef>;
-  @ViewChildren('impactCard') impactCards!: QueryList<ElementRef>;
 
   topCountries = ['BOL', 'AR', 'PER', 'CO', 'USA', 'BRA']; 
 
   ngOnInit(): void {
     this.metrics = this.dataService.getMetrics();
     this.startCountAnimation();
-    setTimeout(() => {
-      this.observeCards();
-      this.observeImpactCards();
-    }, 100);
   }
 
   isSpanish(): boolean {
@@ -214,7 +205,7 @@ export class MetricsDashboardComponent implements OnInit {
 
   private startCountAnimation(): void {
     this.metrics.forEach(metric => {
-      this.animateValue(metric.id, 0, metric.value, 2000);
+      this.animateValue(metric.id, 0, metric.value, 5000);
     });
   }
 
@@ -234,44 +225,6 @@ export class MetricsDashboardComponent implements OnInit {
     };
 
     requestAnimationFrame(animate);
-  }
-
-  private observeCards(): void {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          const id = entry.target.getAttribute('data-id');
-          if (entry.isIntersecting && id) {
-            this.cardStates[id] = 'visible';
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    this.metricCards.forEach(el => {
-      const id = el.nativeElement.getAttribute('data-id');
-      this.cardStates[id] = 'hidden';
-      observer.observe(el.nativeElement);
-    });
-  }
-
-  private observeImpactCards(): void {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            this.impactCardStates[index] = 'visible';
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    this.impactCards.forEach((el, index) => {
-      this.impactCardStates[index] = 'hidden';
-      observer.observe(el.nativeElement);
-    });
   }
 
 }

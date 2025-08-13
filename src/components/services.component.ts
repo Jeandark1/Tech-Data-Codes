@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { LanguageService } from '../services/language.service';
 import { Service } from '../types/interfaces';
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [NgStyle, NgFor, NgIf],
+  imports: [ NgFor, NgIf],
   template: `
     <section id="flipping-cards" class="py-20 relative">
       <!-- Background with dark mode support -->
