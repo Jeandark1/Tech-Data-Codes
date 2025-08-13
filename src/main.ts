@@ -10,7 +10,7 @@ import { LanguageService } from './services/language.service';
 import { HeaderComponent } from './components/header.component';
 import { HeroComponent } from './components/hero.component';
 import { MetricsDashboardComponent } from './components/metrics-dashboard.component';
-import { ServicesComponent } from './components/services.component';
+import { ServicesComponent } from './components/Services/services.component';
 import { TeamComponent } from './components/team.component';
 import { FooterComponent } from './components/footer.component';
 
