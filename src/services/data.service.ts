@@ -43,21 +43,17 @@ export class DataService {
     ];
   }
 
+  getOurServicesSection() {
+    return {
+      titleES: 'Nuestros Servicios',
+      titleEN: 'Our Services',
+      descriptionES: 'Soluciones integrales para impulsar tu negocio digital.',
+      descriptionEN: 'Comprehensive solutions to boost your digital business.'
+    };
+  }
+
   getOurServices(): Service[] {
     return [
-      {
-        id: 'Title-Section-Service',
-        titleES: 'Nuestros Servicios',
-        titleEN: 'Our Services',
-        descriptionES: 'Soluciones integrales para impulsar tu negocio digital.',
-        descriptionEN: 'Comprehensive solutions to boost your digital business.',
-        icon: '',
-        featuresES: [
-        ],
-        featuresEN: [
-        ],
-        color: ''
-      },
       {
         id: 'Tech Development',
         titleES: 'Desarrollo Tecnológico',
@@ -83,7 +79,7 @@ export class DataService {
         id: 'Advanced Education',
         titleES: 'Educación Avanzada',
         titleEN: 'Advanced Education',
-        descriptionES: 'Train with practical courses: master AI, social media and digital tools to save time and make smart decisions.',
+        descriptionES: 'Fórmate con cursos prácticos: domina IA, redes sociales y herramientas digitales para ahorrar tiempo y tomar decisiones inteligentes.',
         descriptionEN: 'Train with practical courses: master AI, social media and digital tools to save time and make smart decisions.',
         icon: '🎓',
         featuresES: [
@@ -106,7 +102,7 @@ export class DataService {
         id: 'Digital Marketing',
         titleES: 'Marketing Digital',
         titleEN: 'Digital Marketing',
-        descriptionES: 'Boost your brand with 360° strategies: from targeted advertising to viral content. We use AI to maximize your ROI.',
+        descriptionES: 'Impulsa tu marca con estrategias integrales: desde publicidad dirigida hasta contenido viral. Usamos IA para maximizar tu retorno de la inversión (ROI).',
         descriptionEN: 'Boost your brand with 360° strategies: from targeted advertising to viral content. We use AI to maximize your ROI.',
         icon: '📊',
         featuresES: [
@@ -129,6 +125,7 @@ export class DataService {
       }
     ];
   }
+
 
   getTeamMembers(): TeamMember[] {
     return [

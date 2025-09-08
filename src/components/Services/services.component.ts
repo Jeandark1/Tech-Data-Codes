@@ -23,6 +23,7 @@ export class ServicesComponent {
     { key: 'implementation' }
   ];
 
+
   ngOnInit(): void {
     this.contentText = this.dataService.getOurServices();
   }
@@ -44,6 +45,26 @@ export class ServicesComponent {
   }
 
 
+  getColor(color: string): string {
+    // Devuelve el color HEX según el nombre o el valor recibido
+    const colorMap: Record<string, string> = {
+      techBlue: '#096ab9',
+      innovationGreen: '#0db583',
+      accentGold: '#ffd166'
+    };
+    return colorMap[color] || '#ccc';
+  }
+
+  getContactLink(serviceId: string): string {
+    const map: Record<string, string> = {
+      'Tech Development': 'https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20desarrollo%20tecnol%C3%B3gico',
+      'Advanced Education': 'https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20cursos',
+      'Digital Marketing': 'https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20marketing%20digital'
+    };
+    return map[serviceId] || 'https://wa.me/59162288955';
+  }
+
+
 
   getTranslatedCardField(id: string, field: 'title' | 'description' | 'icon'): string {
     const item = this.contentText.find(c => c.id == id);
@@ -54,26 +75,6 @@ export class ServicesComponent {
     return (item as any)[key] ?? id;
   }
 
-
-  getTranslatedDescription(description: string): string {
-    const translations: Record<string, string> = {
-      'We create custom digital solutions: from fast websites to systems that automate your processes. Scalable technology to grow your business.':
-        this.isSpanish() ? 'Desarrollo de sistemas, páginas web y aplicaciones personalizadas con tecnología avanzada.' : description,
-      'Train with practical courses: master AI, social media and digital tools to save time and make smart decisions.':
-        this.isSpanish() ? 'Cursos prácticos de IA aplicada a negocios y manejo de tecnologías digitales.' : description,
-      'Boost your brand with 360° strategies: from targeted advertising to viral content. We use AI to maximize your ROI.':
-        this.isSpanish() ? 'Publicidad digital, administración de redes sociales y estrategias de embudos de venta.' : description
-    };
-    return translations[description] || description;
-  }
-
-  getTranslatedFeature(id: string, feature: string): string {
-    const item = this.contentText.find(c => c.id == id);
-    if (!item) return feature;
-    const index = item.featuresEN.indexOf(feature);
-    if (index === -1) return feature;
-    return this.isSpanish() ? item.featuresES[index] : item.featuresEN[index];
-  }
 
   // Process phase translations
   getPhaseTitle(key: string): string {

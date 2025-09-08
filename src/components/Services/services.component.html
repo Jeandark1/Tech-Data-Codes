@@ -13,122 +13,44 @@
         </div>
 
         <!-- Flipping Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-            <!-- Card 1 - Tech Development -->
-            <div class="cardWrapper group" style="width: 300px; height: 400px;">
-                <div class="card">
-                    <!-- Front Face -->
-                    <div class="cardFace front">
-                        <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                            {{ getTranslatedCardField('Tech Development', 'icon') }}
+        <div class="flex flex-wrap justify-center gap-8">
+            <ng-container *ngFor="let service of contentText">
+                <div class="cardWrapper group m-2" style="width: 300px; height: 400px;">
+                    <div class="card">
+                        <!-- Front Face -->
+                        <div class="cardFace front">
+                            <div
+                                class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                                {{ service.icon }}
+                            </div>
+                            <h3 class="card-title">
+                                {{ isSpanish() ? service.titleES : service.titleEN }}
+                            </h3>
+                            <p class="card-description">
+                                {{ isSpanish() ? service.descriptionES : service.descriptionEN }}
+                            </p>
                         </div>
-                        <h3 class="card-title">
-                            {{ getTranslatedCardField('Tech Development', 'title') }}
-                        </h3>
-                        <p class="card-description">
-                            {{ getTranslatedCardField('Tech Development', 'description') }}
-                        </p>
-                    </div>
-
-                    <!-- Back Face -->
-                    <div class="cardFace back">
-                        <h3 class="card-title">
-                            {{ getTranslatedCardField('Tech Development', 'title') }}
-                        </h3>
-                        <ul class="feature-list">
-                            <li>
-                                {{ getTranslatedFeature('Tech Development', 'Custom systems and applications.') }}
-                            </li>
-                            <li>{{ getTranslatedFeature('Tech Development','Professional website development.') }}</li>
-                            <li>{{ getTranslatedFeature('Tech Development','High-conversion landing pages.') }}</li>
-                            <li>{{ getTranslatedFeature('Tech Development','Fully customized software.') }}</li>
-                        </ul>
-                        <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20desarrollo%20tecnol%C3%B3gico"
-                            target="_blank" class="card-button" style="background-color: #096ab9;">
-                            {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
-                        </a>
+                        <!-- Back Face -->
+                        <div class="cardFace back">
+                            <h3 class="card-title">
+                                {{ isSpanish() ? service.titleES : service.titleEN }}
+                            </h3>
+                            <ul class="feature-list">
+                                <li *ngFor="let feature of isSpanish() ? service.featuresES : service.featuresEN">
+                                    {{ feature }}
+                                </li>
+                            </ul>
+                            <a [href]="getContactLink(service.id)" target="_blank" class="card-button"
+                                [ngStyle]="{'background-color': getColor(service.color)}">
+                                {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 2 - Education -->
-            <div class="cardWrapper group" style="width: 300px; height: 400px;">
-                <div class="card">
-                    <!-- Front Face -->
-                    <div class="cardFace front">
-                        <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                            🎓
-                        </div>
-                        <h3 class="card-title">
-                            {{ getTranslatedCardField('Advanced Education','title') }}
-                        </h3>
-                        <p class="card-description">
-                            {{ getTranslatedDescription('Train with practical courses: master AI, social media and
-                            digital tools to save time and make smart decisions.') }}
-                        </p>
-                    </div>
-
-                    <!-- Back Face -->
-                    <div class="cardFace back">
-                        <h3 class="card-title">
-                            {{ getTranslatedCardField('Advanced Education','title') }}
-                        </h3>
-                        <ul class="feature-list">
-                            <li>{{ getTranslatedFeature('Advanced Education','In-person and virtual courses.') }}</li>
-                            <li>{{ getTranslatedFeature('Advanced Education','Practical AI for business.') }}</li>
-                            <li>{{ getTranslatedFeature('Advanced Education','AI applications in different fields.') }}
-                            </li>
-                            <li>{{ getTranslatedFeature('Advanced Education','Technology management courses.') }}</li>
-                            <li>{{ getTranslatedFeature('Advanced Education','Digital certification.') }}</li>
-                        </ul>
-                        <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20cursos"
-                            target="_blank" class="card-button" style="background-color: #0db583;">
-                            {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 - Digital Marketing -->
-            <div class="cardWrapper group" style="width: 300px; height: 400px;">
-                <div class="card">
-                    <!-- Front Face -->
-                    <div class="cardFace front">
-                        <div class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                            📈
-                        </div>
-                        <h3 class="card-title">
-                            {{ getTranslatedCardField('Digital Marketing','title') }}
-                        </h3>
-                        <p class="card-description">
-                            {{ getTranslatedDescription('Boost your brand with 360° strategies: from targeted
-                            advertising to viral content. We use AI to maximize your ROI.') }}
-                        </p>
-                    </div>
-
-                    <!-- Back Face -->
-                    <div class="cardFace back">
-                        <h3 class="card-title">
-                            {{ getTranslatedCardField('Digital Marketing','title') }}
-                        </h3>
-                        <ul class="feature-list">
-                            <li>
-                                {{ getTranslatedFeature('Digital Marketing','Facebook, Google, and TikTok Ads.') }}
-                            </li>
-                            <li>{{ getTranslatedFeature('Digital Marketing', 'WhatsApp Business API.') }}</li>
-                            <li>{{ getTranslatedFeature('Digital Marketing', 'SEO Optimization.') }}</li>
-                            <li>{{ getTranslatedFeature('Digital Marketing', 'Social media management.') }}</li>
-                            <li>{{ getTranslatedFeature('Digital Marketing', 'Sales funnels and CRO.') }}</li>
-                            <li>{{ getTranslatedFeature('Digital Marketing', 'Viral content creation.') }}</li>
-                        </ul>
-                        <a href="https://wa.me/59162288955?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20marketing%20digital"
-                            target="_blank" class="card-button" style="background-color: #ffd166;">
-                            {{ isSpanish() ? 'Contáctanos' : 'Contact us' }}
-                        </a>
-                    </div>
-                </div>
-            </div>
+            </ng-container>
         </div>
+
+
     </div>
 </section>
 
