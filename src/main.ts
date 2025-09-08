@@ -53,10 +53,8 @@ import { FooterComponent } from './components/footer.component';
                 {{ isSpanish() ? 'Casos de Éxito' : 'Success Stories' }}
               </h2>
               <p class="section-subtitle">
-                {{ isSpanish() 
-                  ? 'Descubre cómo hemos transformado empresas y acelerado el crecimiento de nuestros clientes.' 
-                  : 'Discover how we have transformed businesses and accelerated our clients\' growth.' 
-                }}
+           Descubre cómo hemos transformado empresas y acelerado el crecimiento de nuestros clientes.
+                  
               </p>
             </div>
             

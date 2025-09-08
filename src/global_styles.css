@@ -2,7 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   html {
@@ -19,7 +18,16 @@
     @apply box-border;
   }
 }
-
+/* animation with scroll */
+@layer utilities {
+  .scroll-item {
+    @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+  }
+  
+  .scroll-item.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
 
 @layer components {
   .glass-effect {
@@ -153,6 +161,7 @@
     box-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
   }
 }
+
 
   
 }

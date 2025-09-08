@@ -46,7 +46,7 @@ import { LanguageService } from '../services/language.service';
             </h1>
 
             <!-- Subheadline -->
-            <p class="text-xl md:text-2xl text-[#ffffff] mb-8 max-w-3xl mx-auto font-light bg-slate-800/50 backdrop-blur-sm p-4 rounded-xl border border-[rgba(121,72,199,0.3)] neon-glow">
+            <p class="text-xl md:text-2xl text-[#ffffff] mb-8 max-w-3xl mx-auto font-light bg-blue-500/50 backdrop-blur-sm p-4 rounded-xl border border-[rgba(201,96,233,0.95)] neon-glow">
               {{ isSpanish() 
                 ? 'Donde el conocimiento, el software y el marketing convergen para transformar empresas y crear líderes tecnológicos.' 
                 : 'Where knowledge, software, and marketing converge to transform businesses and create tech leaders.' 
@@ -195,11 +195,11 @@ export class HeroComponent implements OnInit, OnDestroy, AfterViewInit {
   currentLanguage = this.languageService.currentLanguage;
   
   heroStats = [
-    { value: '10K+', label: 'Professionals' },
+    { value: '100+', label: 'Professionals' },
     { value: '20+', label: 'SaaS Solutions' },
-    { value: '120+', label: 'Brands' },
-    { value: '50+', label: 'Startups' }
-];
+    { value: '20+', label: 'Brands' },
+    { value: '3+', label: 'Startups' }
+  ];
   
   ngOnInit(): void {
     this.updateCanvasSize();

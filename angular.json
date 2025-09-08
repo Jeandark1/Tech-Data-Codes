@@ -42,9 +42,7 @@
               "zone.js"
             ],
             "scripts": [],
-            "styles": [
-              "src/global_styles.css"
-            ],
+            "styles": ["src/global_styles.css"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "./node_modules"
